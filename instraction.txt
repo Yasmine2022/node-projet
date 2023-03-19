@@ -1,0 +1,18 @@
+1-cd node-app
+docker build .
+2-docker run -p 3001:3000 sha256:b349bb73f51d6f7fb7718a80fd2bc6a7c78fa45572e4c92c5539a1c293406557
+3- docker run -p 3005:3000 --name nodepr b349bb73f51d
+docker stop nodepr
+docker start nodepr
+4- docker container prune
+docker image prune
+5-docker build -t nd:1 .
+6-docker run -p 3006:3000 --rm nd:1
+Dockerfile (node):
+FROM node
+WORKDIR /app
+COPY package.json /app
+RUN npm install
+COPY . /app
+EXPOSE 3000
+CMD [ "node", "server.js"]
